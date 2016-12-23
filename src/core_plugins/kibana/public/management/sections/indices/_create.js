@@ -36,6 +36,11 @@ uiModules.get('apps/management')
   index.nameInterval = _.find(index.nameIntervalOptions, { name: 'daily' });
   index.timeField = null;
 
+  // point angular-translate to base subdirectory where this modules i18n files are located
+  // /home/ELK/kibana-5.1.1/src/core_plugins/kibana/public/management/sections/indices/i18n
+  $translatePartialLoader.addPart('../plugins/kibana/management/sections/indices');
+  $translate.refresh();
+  
   $scope.canExpandIndices = function () {
     // to maximize performance in the digest cycle, move from the least
     // expensive operation to most
